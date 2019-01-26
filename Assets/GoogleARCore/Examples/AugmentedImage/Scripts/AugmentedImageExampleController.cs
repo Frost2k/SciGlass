@@ -18,13 +18,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Examples.AugmentedImage
-{
+//namespace GoogleARCore.Examples.AugmentedImage
+//{
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using GoogleARCore;
     using UnityEngine;
     using UnityEngine.UI;
+
+    using UnityEngine.SceneManagement;
 
     /// <summary>
     /// Controller for AugmentedImage example.
@@ -64,7 +66,22 @@ namespace GoogleARCore.Examples.AugmentedImage
             }
 
             // Get updated augmented images for this frame.
+	    /*
             Session.GetTrackables<AugmentedImage>(m_TempAugmentedImages, TrackableQueryFilter.Updated);
+	    if (m_TempAugmentedImages.Count != 0)
+	    {
+		AugmentedImageVisualizer visualizer = null;
+		m_Visualizers.TryGetValue(m_TempAugmentedImages[0].DatabaseIndex, out visualizer);
+		visualizer.Image = m_TempAugmentedImages[0];
+		m_Visualizers.Add(m_TempAugmentedImages[0].DatabaseIndex, visualizer);
+
+		
+	    	Anchor anchor = m_TempAugmentedImages[0].CreateAnchor(m_TempAugmentedImages[0].CenterPose);
+	    	visualizer = (AugmentedImageVisualizer)Instantiate(AugmentedImageVisualizerPrefab, anchor.transform);
+	    	visualizer.Image = m_TempAugmentedImages[0];
+	    	m_Visualizers.Add(m_TempAugmentedImages[0].DatabaseIndex, visualizer);
+	    }
+	    */
 
             // Create visualizers and anchors for updated augmented images that are tracking and do not previously
             // have a visualizer. Remove visualizers for stopped images.
@@ -74,6 +91,7 @@ namespace GoogleARCore.Examples.AugmentedImage
                 m_Visualizers.TryGetValue(image.DatabaseIndex, out visualizer);
                 if (image.TrackingState == TrackingState.Tracking && visualizer == null)
                 {
+		
                     // Create an anchor to ensure that ARCore keeps tracking this augmented image.
                     Anchor anchor = image.CreateAnchor(image.CenterPose);
                     visualizer = (AugmentedImageVisualizer)Instantiate(AugmentedImageVisualizerPrefab, anchor.transform);
@@ -100,4 +118,4 @@ namespace GoogleARCore.Examples.AugmentedImage
             FitToScanOverlay.SetActive(true);
         }
     }
-}
+//}

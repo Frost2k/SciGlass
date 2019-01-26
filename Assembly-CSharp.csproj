@@ -192,6 +192,8 @@
      <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPSessionStatus.cs" />
      <Compile Include="Assets\GoogleARCore\SDK\Scripts\XPTrackingState.cs" />
      <Compile Include="Assets\Scripts\ARController.cs" />
+     <Compile Include="Assets\Scripts\AugmentedImageExampleController.cs" />
+     <Compile Include="Assets\Scripts\AugmentedImageVisualizer.cs" />
      <Compile Include="Assets\Scripts\GridVisualizer.cs" />
      <Compile Include="Assets\Scripts\PortalManager.cs" />
      <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PlaneGrid.shader" />
@@ -412,6 +414,9 @@
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>F:/Unity/Editor/2018.3.3f1/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="Vuforia.UnityExtensions">
+ <HintPath>F:/Unity/Editor/2018.3.3f1/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.GoogleAudioSpatializer">
  <HintPath>F:/Unity/Editor/2018.3.3f1/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
