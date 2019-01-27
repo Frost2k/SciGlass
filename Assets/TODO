@@ -1,0 +1,2 @@
+* Make sure that system only tracks one image at a time
+	* Make sure, once an image is selected, it's not scanning for new images (?)

@@ -20,17 +20,49 @@ public class ARController : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-        
+		/*
+        	// Check ARCore system status
+		if (Session.Status != SessionStatus.Tracking) return;
+
+		// Make portal face camera
+		Vector3 cameraPosition = ARCamera.transform.position;
+		
+		// Portal should only rotate around y axis
+		// lock camera and portal together
+		cameraPosition.y = Portal.transform.position.y;
+
+		// rotate portal to face camera
+		Portal.transform.LookAt(cameraPosition, Portal.transform.up);
+
+		// attach portal to anchor
+		Portal.transform.parent = GlobalInfo.anchor.transform;
+		*/
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		return;	// remove this
 
+		/*
         	// Check ARCore system status
 		if (Session.Status != SessionStatus.Tracking) return;
 
+		// Make portal face camera
+		Vector3 cameraPosition = ARCamera.transform.position;
+		
+		// Portal should only rotate around y axis
+		// lock camera and portal together
+		cameraPosition.y = Portal.transform.position.y;
+
+		// rotate portal to face camera
+		Portal.transform.LookAt(cameraPosition, Portal.transform.up);
+
+		// attach portal to anchor
+		Portal.transform.parent = GlobalInfo.anchor.transform;
+		*/
+
+
+		/*
 		// The following function will fill m_NewTrackedPlanes wth the planes that ARCore detected in the current frame
 		Session.GetTrackables<TrackedPlane>(m_NewTrackedPlanes, TrackableQueryFilter.New);
 
@@ -53,7 +85,7 @@ public class ARController : MonoBehaviour
 		TrackableHit hit;
 		if (Frame.Raycast(touch.position.x, touch.position.y, TrackableHitFlags.PlaneWithinPolygon, out hit))
 		{
-			/* place portal on top of tracked plane that was touched */
+			// place portal on top of tracked plane that was touched 
 			// Enable the portal
 			Portal.SetActive(true);
 
@@ -77,5 +109,6 @@ public class ARController : MonoBehaviour
 			// ARCore will keep understanding the world and update the anchors accordingly hence we need to attack our portal to the anchor
 			Portal.transform.parent = anchor.transform;
 		}
+		*/
 	}
 }

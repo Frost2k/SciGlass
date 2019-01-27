@@ -31,6 +31,7 @@ namespace GoogleARCore.Examples.AugmentedImage
     public class AugmentedImageExampleController : MonoBehaviour
     {
         public GameObject FitToScanOverlay; // overlay containing the fit to scan user guide
+	public GameObject Camera;	
         private List<AugmentedImage> m_TempAugmentedImages = new List<AugmentedImage>();
 
 	public void Start()
@@ -46,20 +47,85 @@ namespace GoogleARCore.Examples.AugmentedImage
 
             // Get updated augmented images for this frame.
             Session.GetTrackables<AugmentedImage>(m_TempAugmentedImages, TrackableQueryFilter.Updated);
-	    //if (m_TempAugmentedImages.Count > 0 && m_TempAugmentedImages[0].Name == "ReptileLab") 
-	    //    SceneManager.LoadScene("ReptileRoom");
 
-	    if (m_TempAugmentedImages.Count > 0)
+	    if (m_TempAugmentedImages.Count == 1)
 	    {
-		var imgName = m_TempAugmentedImages[0].Name;
+		var img	    = m_TempAugmentedImages[0];
+		var imgName = img.Name;
 
-		if	(imgName == "ReptileLab")	GlobalInfo.LabType = "Reptile";
-		else if (imgName == "ChemLab")		GlobalInfo.LabType = "Chem";
-		else if (imgName == "WineLab")		GlobalInfo.LabType = "Wine";
-		else if (imgName == "BioLab")		GlobalInfo.LabType = "Bio";
+		float anchorOffset = 0.3f;
 
-		SceneManager.LoadScene("Lab");
+		// Reptile lab is top left of poster
+		if	(imgName == "ReptileLab")
+		{
+			GlobalInfo.LabType = "Reptile";
+			GlobalInfo.anchor =
+				Session.CreateAnchor
+				(
+					new Pose
+					(
+						new Vector3(img.CenterPose.position.x /*+ anchorOffset*/, img.CenterPose.position.y /*- anchorOffset*/, img.CenterPose.position.z),
+						//img.CenterPose.rotation
+						Camera.transform.rotation
+					),
+					img
+				);
+		}
+
+		// Chem lab should be top right of poster
+		else if (imgName == "ChemLab")
+		{
+			GlobalInfo.LabType = "Chem";
+			GlobalInfo.anchor =
+				Session.CreateAnchor
+				(
+					new Pose
+					(
+						new Vector3(img.CenterPose.position.x /*- anchorOffset*/, img.CenterPose.position.y /*- anchorOffset*/, img.CenterPose.position.z),
+						//img.CenterPose.rotation
+						Camera.transform.rotation
+					),
+					img
+				);
+		}
+
+		// Wine lab is bottom left of poster
+		else if (imgName == "WineLab")
+		{
+			GlobalInfo.LabType = "Wine";
+			GlobalInfo.anchor = 
+				Session.CreateAnchor
+				(
+					new Pose
+					(
+						new Vector3(img.CenterPose.position.x /*+ anchorOffset*/, img.CenterPose.position.y /*+ anchorOffset*/, img.CenterPose.position.z),
+						//img.CenterPose.rotation
+						Camera.transform.rotation
+					),
+					img
+				);
+		}
+
+		// Bio lab is bottom right of poster
+		else if (imgName == "BioLab")
+		{
+			GlobalInfo.LabType = "Bio";
+			GlobalInfo.anchor = 
+				Session.CreateAnchor
+				(
+					new Pose
+					(
+						new Vector3(img.CenterPose.position.x /*- anchorOffset*/, img.CenterPose.position.y /*+ anchorOffset*/, img.CenterPose.position.z),
+						//img.CenterPose.rotation
+						Camera.transform.rotation
+					),
+					img
+				);
+		}
+
+		//SceneManager.LoadScene("Lab");
+		FitToScanOverlay.SetActive(false);
 	    }
-        }
+		}
     }
 }
