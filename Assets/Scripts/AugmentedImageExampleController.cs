@@ -46,8 +46,20 @@ namespace GoogleARCore.Examples.AugmentedImage
 
             // Get updated augmented images for this frame.
             Session.GetTrackables<AugmentedImage>(m_TempAugmentedImages, TrackableQueryFilter.Updated);
-	    if (m_TempAugmentedImages.Count > 0 && m_TempAugmentedImages[0].Name == "test_earth") 
-		SceneManager.LoadScene("SampleScene");
+	    //if (m_TempAugmentedImages.Count > 0 && m_TempAugmentedImages[0].Name == "ReptileLab") 
+	    //    SceneManager.LoadScene("ReptileRoom");
+
+	    if (m_TempAugmentedImages.Count > 0)
+	    {
+		var imgName = m_TempAugmentedImages[0].Name;
+
+		if	(imgName == "ReptileLab")	GlobalInfo.LabType = "Reptile";
+		else if (imgName == "ChemLab")		GlobalInfo.LabType = "Chem";
+		else if (imgName == "WineLab")		GlobalInfo.LabType = "Wine";
+		else if (imgName == "BioLab")		GlobalInfo.LabType = "Bio";
+
+		SceneManager.LoadScene("Lab");
+	    }
         }
     }
 }

@@ -194,20 +194,16 @@
      <Compile Include="Assets\Scripts\ARController.cs" />
      <Compile Include="Assets\Scripts\AugmentedImageExampleController.cs" />
      <Compile Include="Assets\Scripts\AugmentedImageVisualizer.cs" />
+     <Compile Include="Assets\Scripts\GlobalInfo.cs" />
      <Compile Include="Assets\Scripts\GridVisualizer.cs" />
+     <Compile Include="Assets\Scripts\LabLoad.cs" />
      <Compile Include="Assets\Scripts\PortalManager.cs" />
      <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PlaneGrid.shader" />
-     <None Include="Assets\3D\dragon_readme.txt" />
      <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileDiffuseWithLightEstimation.shader" />
      <None Include="Assets\GoogleARCore\SDK\Materials\ARBackground.shader" />
-     <None Include="Assets\3D\Materials\Derg\Sponza.shader" />
-     <None Include="Assets\3D\Materials\Portal.shader" />
      <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\PointCloud.shader" />
      <None Include="Assets\GoogleARCore\Examples\ComputerVision\Materials\EdgeDetectionBackground.shader" />
-     <None Include="Assets\3D\Materials\PortalPlane.shader" />
-     <None Include="Assets\3D\Materials\Sponza\Sponza.shader" />
      <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileSpecularWithLightEstimation.shader" />
-     <None Include="Assets\3D\LICENSE.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>F:/RADev/projects/SciGlass/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
